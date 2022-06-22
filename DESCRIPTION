@@ -2,7 +2,10 @@ Type: Package
 Package: RcppColors
 Title: 'C++' Header Files for Color Conversion
 Version: 0.1.0
-Author: Stéphane Laurent
+Authors@R: c(
+    person("Stéphane", "Laurent", , "laurent_step@outlook.fr", role = c("cre", "aut")),
+    person("Scott", "Spencer", role = "aut")
+  )
 Maintainer: Stéphane Laurent <laurent_step@outlook.fr>
 Description: Provides 'C++' header files to deal with color conversion
     between different color spaces with 'Rcpp'. Also exports functions to
