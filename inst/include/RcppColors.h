@@ -420,7 +420,7 @@ static std::string _hsluv2hex_(double h, double s, double l) {
 
 namespace RcppColors {
 
-  static std::string rgb2hex(double r, double g, double b) {
+  static inline std::string rgb2hex(double r, double g, double b) {
     int ri = (int)round(r);
     int gi = (int)round(g);
     int bi = (int)round(b);
@@ -436,7 +436,7 @@ namespace RcppColors {
     return rgb_to_hex(ri, gi, bi);
   }
 
-  static std::string hsluv2hex(double h, double s, double l) {
+  static inline std::string hsluv2hex(double h, double s, double l) {
     return _hsluv2hex_(h, s, l);
   }
 
