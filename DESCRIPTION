@@ -5,7 +5,7 @@ Version: 0.1.0
 Author: Stéphane Laurent
 Maintainer: Stéphane Laurent <laurent_step@outlook.fr>
 Description: Provides 'C++' header files to deal with color conversion
-    between different color spaces in 'Rcpp'. Also exports functions to
+    between different color spaces with 'Rcpp'. Also exports functions to
     convert colors from the 'HSLuv' color space for usage in R. 'HSLuv' is
     a human-friendly alternative to HSL.
 License: GPL-3
@@ -16,3 +16,4 @@ Imports:
 LinkingTo: 
     Rcpp
 Encoding: UTF-8
+RoxygenNote: 7.2.0
