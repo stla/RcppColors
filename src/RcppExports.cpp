@@ -11,19 +11,6 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
-// rgb2hex
-std::string rgb2hex(double r, double g, double b);
-RcppExport SEXP _RcppColors_rgb2hex(SEXP rSEXP, SEXP gSEXP, SEXP bSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< double >::type r(rSEXP);
-    Rcpp::traits::input_parameter< double >::type g(gSEXP);
-    Rcpp::traits::input_parameter< double >::type b(bSEXP);
-    rcpp_result_gen = Rcpp::wrap(rgb2hex(r, g, b));
-    return rcpp_result_gen;
-END_RCPP
-}
 // hsluv2rgb
 Rcpp::IntegerVector hsluv2rgb(double h, double s, double l);
 RcppExport SEXP _RcppColors_hsluv2rgb(SEXP hSEXP, SEXP sSEXP, SEXP lSEXP) {
@@ -37,24 +24,23 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// hsluv2hex
-std::string hsluv2hex(double h, double s, double l);
-RcppExport SEXP _RcppColors_hsluv2hex(SEXP hSEXP, SEXP sSEXP, SEXP lSEXP) {
+// hsluv
+std::string hsluv(double h, double s, double l);
+RcppExport SEXP _RcppColors_hsluv(SEXP hSEXP, SEXP sSEXP, SEXP lSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< double >::type h(hSEXP);
     Rcpp::traits::input_parameter< double >::type s(sSEXP);
     Rcpp::traits::input_parameter< double >::type l(lSEXP);
-    rcpp_result_gen = Rcpp::wrap(hsluv2hex(h, s, l));
+    rcpp_result_gen = Rcpp::wrap(hsluv(h, s, l));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_RcppColors_rgb2hex", (DL_FUNC) &_RcppColors_rgb2hex, 3},
     {"_RcppColors_hsluv2rgb", (DL_FUNC) &_RcppColors_hsluv2rgb, 3},
-    {"_RcppColors_hsluv2hex", (DL_FUNC) &_RcppColors_hsluv2hex, 3},
+    {"_RcppColors_hsluv", (DL_FUNC) &_RcppColors_hsluv, 3},
     {NULL, NULL, 0}
 };
 
