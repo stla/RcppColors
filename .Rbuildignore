@@ -2,3 +2,4 @@
 ^\.Rproj\.user$
 ^inst/keep$
 ^inst/essais$
+^\.github$

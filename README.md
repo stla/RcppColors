@@ -1,5 +1,9 @@
 # RcppColors
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/stla/RcppColors/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/stla/RcppColors/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 Two C++ functions are exposed by this package:
 
 ```cpp
