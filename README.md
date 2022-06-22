@@ -12,3 +12,10 @@ std::string rgba2hex(double r, double g, double b, double a);
 std::string hsluv2hex(double h, double s, double l);
 std::string hsluv2hex(double h, double s, double l, double alpha);
 ```
+
+```
+r, g, b ∈ [0, 255] (red, green, blue)
+a, alpha ∈ [0, 1] (opacity)
+h ∈ [0, 360] (hue)
+s,l ∈ [0, 100] (saturation, lightness)
+```
