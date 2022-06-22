@@ -9,3 +9,7 @@ hsluv_cpp <- function(h, s, l) {
     .Call(`_RcppColors_hsluv_cpp`, h, s, l)
 }
 
+hsluv_alpha_cpp <- function(h, s, l, alpha) {
+    .Call(`_RcppColors_hsluv_alpha_cpp`, h, s, l, alpha)
+}
+

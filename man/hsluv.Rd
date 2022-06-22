@@ -5,7 +5,7 @@
 \alias{hsluv2rgb}
 \title{HSLuv color specification}
 \usage{
-hsluv(h = 360, s = 100, l = 100)
+hsluv(h = 360, s = 100, l = 100, alpha = NULL)
 
 hsluv2rgb(h = 360, s = 100, l = 100)
 }
@@ -15,6 +15,9 @@ hsluv2rgb(h = 360, s = 100, l = 100)
 \item{s}{the saturation, a number between \code{0} and \code{100}}
 
 \item{l}{the lightness, a number between \code{0} and \code{100}}
+
+\item{alpha}{opacity, a number between \code{0} and \code{1}, 
+or \code{NULL}}
 }
 \value{
 The \code{hsluv} function returns a hexadecimal string representing 

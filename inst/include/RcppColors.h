@@ -205,6 +205,15 @@ static std::string _hsluv2hex_(double h, double s, double l) {
   return outhex;
 }
 
+static std::string opacity(double alpha) {
+  if(alpha < 0.0 || alpha > 1.0) {
+    Rcpp::stop("Invalid value of `alpha`.");
+  }
+  int alphai = (int)(round(255.0 * alpha));
+  std::stringstream ss;
+  ss << std::setfill('0') << std::setw(2) << std::hex << alphai;
+  return ss.str();
+}
 
 namespace RcppColors {
 
@@ -224,8 +233,18 @@ namespace RcppColors {
     return rgb_to_hex(ri, gi, bi);
   }
 
+  static inline std::string rgba2hex(double r, double g, double b, double a) {
+    const std::string ahex = opacity(a);
+    return rgb2hex(r, g, b) + ahex;
+  }
+
   static inline std::string hsluv2hex(double h, double s, double l) {
     return _hsluv2hex_(h, s, l);
+  }
+
+  static inline std::string hsluv2hex(double h, double s, double l, double alpha) {
+    const std::string alphahex = opacity(alpha);
+    return _hsluv2hex_(h, s, l) + alphahex;
   }
 
 }  // namespace RcppColors

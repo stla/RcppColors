@@ -37,10 +37,25 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// hsluv_alpha_cpp
+std::string hsluv_alpha_cpp(double h, double s, double l, double alpha);
+RcppExport SEXP _RcppColors_hsluv_alpha_cpp(SEXP hSEXP, SEXP sSEXP, SEXP lSEXP, SEXP alphaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type h(hSEXP);
+    Rcpp::traits::input_parameter< double >::type s(sSEXP);
+    Rcpp::traits::input_parameter< double >::type l(lSEXP);
+    Rcpp::traits::input_parameter< double >::type alpha(alphaSEXP);
+    rcpp_result_gen = Rcpp::wrap(hsluv_alpha_cpp(h, s, l, alpha));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_RcppColors_hsluv2rgb_cpp", (DL_FUNC) &_RcppColors_hsluv2rgb_cpp, 3},
     {"_RcppColors_hsluv_cpp", (DL_FUNC) &_RcppColors_hsluv_cpp, 3},
+    {"_RcppColors_hsluv_alpha_cpp", (DL_FUNC) &_RcppColors_hsluv_alpha_cpp, 4},
     {NULL, NULL, 0}
 };
 
