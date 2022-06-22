@@ -1,0 +1,18 @@
+Type: Package
+Package: RcppColors
+Title: 'C++' Header Files for Color Conversion
+Version: 0.1.0
+Author: Stéphane Laurent
+Maintainer: Stéphane Laurent <laurent_step@outlook.fr>
+Description: Provides 'C++' header files to deal with color conversion
+    between different color spaces in 'Rcpp'. Also exports functions to
+    convert colors from the 'HSLuv' color space for usage in R. 'HSLuv' is
+    a human-friendly alternative to HSL.
+License: GPL-3
+URL: https://github.com/stla/RcppColors
+BugReports: https://github.com/stla/RcppColors/issues
+Imports: 
+    Rcpp (>= 1.0.8)
+LinkingTo: 
+    Rcpp
+Encoding: UTF-8
