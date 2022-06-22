@@ -3,12 +3,6 @@
 
 #include <Rcpp.h>
 
-// void hsluv_to_rgb(double,
-//                   double,
-//                   double,
-//                   double*,
-//                   double*,
-//                   double*);
 
 static std::string rgb_to_hex(int r, int g, int b) {
   std::stringstream ss;
