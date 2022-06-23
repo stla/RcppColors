@@ -19,3 +19,21 @@ a, alpha ∈ [0, 1] (opacity)
 h ∈ [0, 360] (hue)
 s,l ∈ [0, 100] (saturation, lightness)
 ```
+
+## Usage in a package with **Rcpp**
+
+The **LinkingTo** field in the **DESCRIPTION** file should look like
+
+```yaml
+LinkingTo: 
+    Rcpp,
+    RcppColors
+```
+
+Then, in your **C++** file, you can call the above functions like this:
+
+```cpp
+#include <RcppColors.h>
+
+std::string mycolor = RcppColors::rgb2hex(0.0, 128.0, 255.0);
+```
