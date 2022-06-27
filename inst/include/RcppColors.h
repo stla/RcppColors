@@ -284,7 +284,7 @@ namespace RcppColors {
                                     double v,
                                     double alpha) {
     const std::string alphahex = opacity(alpha);
-    return hsv2hex(h, s, l) + alphahex;
+    return hsv2hex(h, s, v) + alphahex;
   }
 
 }  // namespace RcppColors
