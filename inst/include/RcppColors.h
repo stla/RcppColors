@@ -220,7 +220,7 @@ static double modulo(double a, double p) {
 }
 
 // used for hsv -> rgb
-static void f(double x, double h, double s, double v) {
+static double f(double x, double h, double s, double v) {
   double k = modulo(x + h / 60.0, 6.0);
   double mm = std::max(0.0, std::min(k, std::min(4.0 - k, 1.0)));
   v /= v / 100.0;
