@@ -3,7 +3,6 @@
 
 #include <Rcpp.h>
 
-
 static std::string rgb_to_hex(int r, int g, int b) {
   std::stringstream ss;
   ss << "#";
@@ -215,6 +214,20 @@ static std::string opacity(double alpha) {
   return ss.str();
 }
 
+static double modulo(double a, double p) {
+  double i = std::floor(a / p);
+  return a - i * p;
+}
+
+// used for hsv -> rgb
+static void f(double x, double h, double s, double v) {
+  double k = modulo(x + h / 60.0, 6.0);
+  double mm = std::max(0; 0, std::min(k, std::min(4.0 - k, 1.0)));
+  v /= v / 100.0;
+  s /= s / 100.0;
+  return 255.0 * (v - v * s * mm);
+}
+
 namespace RcppColors {
 
   static inline std::string rgb2hex(double r, double g, double b) {
@@ -242,9 +255,36 @@ namespace RcppColors {
     return _hsluv2hex_(h, s, l);
   }
 
-  static inline std::string hsluv2hex(double h, double s, double l, double alpha) {
+  static inline std::string hsluv2hex(double h,
+                                      double s,
+                                      double l,
+                                      double alpha) {
     const std::string alphahex = opacity(alpha);
     return _hsluv2hex_(h, s, l) + alphahex;
+  }
+
+  static inline std::string hsv2hex(double h, double s, double v) {
+    if(h < 0.0 || h > 360.0) {
+      Rcpp::stop("Invalid value of `h`.");
+    }
+    if(s < 0.0 || s > 100.0) {
+      Rcpp::stop("Invalid value of `s`.");
+    }
+    if(v < 0.0 || v > 100.0) {
+      Rcpp::stop("Invalid value of `v`.");
+    }
+    int r = (int)(f(5.0, h, s, v));
+    int g = (int)(f(3.0, h, s, v));
+    int b = (int)(f(1.0, h, s, v));
+    return rgb_to_hex(r, g, b);
+  }
+
+  static inline std::string hsv2hex(double h,
+                                    double s,
+                                    double v,
+                                    double alpha) {
+    const std::string alphahex = opacity(alpha);
+    return hsv2hex(h, s, l) + alphahex;
   }
 
 }  // namespace RcppColors
