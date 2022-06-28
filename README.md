@@ -119,4 +119,60 @@ shade3d(mesh)
 
 ![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/ZetaBall.gif)
 
+```r
+library(RcppColors)
+ikeda <- Vectorize(function(x, y, tau0 = 0, gamma = 2.5){
+  for(k in 1L:5L){
+    tau <- tau0 - 6.0/(1.0 + x*x + y*y)
+    newx <- 0.97 + gamma * (x*cos(tau) - y*sin(tau))
+    y <- gamma * (x*sin(tau)+y*cos(tau))
+    x <- newx
+  }
+  z <- complex(real = x, imaginary = y)
+  colorMap1(z, reverse = c(TRUE, FALSE, FALSE))
+})
+
+x <- y <- seq(-3, 3, len = 3000)
+image <- outer(y, x, function(x, y) ikeda(x, y))
+
+opar <- par(mar = c(0,0,0,0), bg = "#002240")
+plot(
+  c(-100, 100), c(-100, 100), type = "n", 
+  xlab = "", ylab = "", axes = FALSE, asp = 1
+)
+rasterImage(image, -100, -100, 100, 100)
+par(opar)
+```
+
+![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/Ikeda.png)
+
+```
+library(RcppColors)
+library(jacobi)
+
+f <- Vectorize(function(q){
+  if(Mod(q) > 1  || (Im(q) == 0 && Re(q) <= 0)){
+    z <- NA_complex_
+  }else{
+    z <- EisensteinE(6, q)
+  }
+  colorMap2(z, bkgcolor = "#002240")
+})
+
+x <- y <- seq(-1, 1, len = 2000)
+image <- outer(y, x, function(x, y){
+  f(complex(real = x, imaginary = y)) 
+})
+
+opar <- par(mar = c(0,0,0,0), bg = "#002240")
+plot(
+  c(-100, 100), c(-100, 100), type = "n", 
+  xlab = "", ylab = "", axes = FALSE, asp = 1
+)
+rasterImage(image, -100, -100, 100, 100)
+par(opar)
+```
+
+![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/E6.png)
+
 

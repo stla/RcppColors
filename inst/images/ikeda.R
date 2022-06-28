@@ -1,16 +1,4 @@
-
-colormap2 <- function(z){
-  if(is.na(z)) return("#000000")
-  if(is.infinite(z) || is.nan(z)) return("#000000")
-  arg <- Arg(z)
-  if(arg < 0) arg <- 2*pi + arg
-  h <- arg / 2 / pi
-  x <- 2*pi*log1p(Mod(z))
-  s <- sqrt((1 + sin(x))/2)
-  v <- (1 + cos(x))/2
-  hsv(h, s, v)
-}
-
+library(RcppColors)
 ikeda <- Vectorize(function(x, y, tau0 = 0, gamma = 2.5){
   for(k in 1L:5L){
     tau <- tau0 - 6.0/(1.0 + x*x + y*y)
@@ -19,7 +7,7 @@ ikeda <- Vectorize(function(x, y, tau0 = 0, gamma = 2.5){
     x <- newx
   }
   z <- complex(real = x, imaginary = y)
-  colorMap1(as.matrix(z), reverse = c(TRUE, FALSE, FALSE))
+  colorMap1(z, reverse = c(TRUE, FALSE, FALSE))
 })
 
 
