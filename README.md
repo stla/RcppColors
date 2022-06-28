@@ -146,7 +146,7 @@ par(opar)
 
 ![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/Ikeda.png)
 
-```
+```r
 library(RcppColors)
 library(jacobi)
 
