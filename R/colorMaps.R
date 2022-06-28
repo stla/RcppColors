@@ -1,14 +1,20 @@
+isComplex <- function(x){
+  is.complex(x) || is.numeric(x)
+}
+
 #' @title Color mappings functions
 #' @description Functions mapping each complex number to a color.
 #'
-#' @param Z complex matrix
+#' @param Z complex number, vector or matrix
 #' @param bkgcolor background color; it is applied for the \code{NA} values 
 #'   of \code{Z}  
 #' @param nancolor color for infinite and \code{NaN} values 
 #' @param reverse logical vector of length three; for each color component 
 #'   (e.g. R, G, B), whether to reverse it (e.g. \code{R -> 255-R})
 #'
-#' @return A character matrix having the same dimensions as \code{Z}.
+#' @return A string or a character vector or a character matrix, 
+#'   having the same size as \code{Z}. Each entry is a color given 
+#'   by a hexadecimal string.
 #' 
 #' \if{html}{
 #'   \out{<div style="text-align: center">}\figure{ModularForm.png}{options: style="max-width:60\%;"}\out{</div>}
@@ -56,7 +62,16 @@ colorMap1 <- function(
   Z, bkgcolor = "#15191e", nancolor = "#000000", 
   reverse = c(FALSE, FALSE, FALSE)
 ){
-  ColorMap1(Z, bkgcolor, nancolor, reverse[1], reverse[2], reverse[3])
+  stopifnot(isComplex(Z))
+  ismatrix <- is.matrix(Z)
+  if(!ismatrix){
+    Z <- cbind(Z)
+  }
+  P <- ColorMap1(Z, bkgcolor, nancolor, reverse[1], reverse[2], reverse[3])
+  if(!ismatrix){
+    P <- c(P)
+  }
+  P
 }
 
 #' @rdname colorMaps
@@ -65,5 +80,13 @@ colorMap2 <- function(
     Z, bkgcolor = "#15191e", nancolor = "#000000", 
     reverse = c(FALSE, FALSE, FALSE)
 ){
-  ColorMap2(Z, bkgcolor, nancolor, reverse[1], reverse[2], reverse[3])
+  ismatrix <- is.matrix(Z)
+  if(!ismatrix){
+    Z <- cbind(Z)
+  }
+  P <- ColorMap2(Z, bkgcolor, nancolor, reverse[1], reverse[2], reverse[3])
+  if(!ismatrix){
+    P <- c(P)
+  }
+  P
 }

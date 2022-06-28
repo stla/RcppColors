@@ -7,7 +7,8 @@
   hexadecimal.
 }
 \description{
-  This package is mainly intended to be used with 'Rcpp'.
+  This package is mainly intended to be used with 'Rcpp', but it also 
+  provides some R functions for color conversion and color mappings.
 }
 \details{
   See README for a description of the available 'C++' functions and 
