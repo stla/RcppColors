@@ -75,12 +75,12 @@ mesh <- vcgSphere(subdivision = 8)
 
 color <- apply(mesh$vb[-4L, ], 2L, function(xyz){
   if(sum(xyz == 0) >= 2){
-    z <- as.matrix(NA_complex_)
+    z <- NA_complex_
   }else{
     a <- xyz[1]
     b <- xyz[2]
     c <- xyz[3]
-    z <- as.matrix(Carlson_RJ(a, b, c, 1i, 1e-5))
+    z <- Carlson_RJ(a, b, c, 1i, 1e-5)
   }
   colorMap1(z)
 })
@@ -107,7 +107,7 @@ color <- apply(mesh$vb[-4L, ], 2L, function(xyz){
   b <- xyz[2]
   c <- xyz[3]
   z <- wzeta(a + 1i* b, tau = (1i+c)/2)
-  colorMap1(as.matrix(z))
+  colorMap1(z)
 })
 
 mesh$material <- list(color = color)
