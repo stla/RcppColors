@@ -64,6 +64,7 @@ colorMap1 <- function(
 ){
   stopifnot(isComplex(Z))
   ismatrix <- is.matrix(Z)
+  storage.mode(Z) <- "complex"
   if(!ismatrix){
     Z <- cbind(Z)
   }
@@ -80,6 +81,8 @@ colorMap2 <- function(
     Z, bkgcolor = "#15191e", nancolor = "#000000", 
     reverse = c(FALSE, FALSE, FALSE)
 ){
+  stopifnot(isComplex(Z))
+  storage.mode(Z) <- "complex"
   ismatrix <- is.matrix(Z)
   if(!ismatrix){
     Z <- cbind(Z)
