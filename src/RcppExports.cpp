@@ -51,11 +51,25 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// ColorMap1
+Rcpp::CharacterMatrix ColorMap1(Rcpp::ComplexMatrix Z, std::string bkgcolor, std::string nancolor);
+RcppExport SEXP _RcppColors_ColorMap1(SEXP ZSEXP, SEXP bkgcolorSEXP, SEXP nancolorSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::ComplexMatrix >::type Z(ZSEXP);
+    Rcpp::traits::input_parameter< std::string >::type bkgcolor(bkgcolorSEXP);
+    Rcpp::traits::input_parameter< std::string >::type nancolor(nancolorSEXP);
+    rcpp_result_gen = Rcpp::wrap(ColorMap1(Z, bkgcolor, nancolor));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_RcppColors_hsluv2rgb_cpp", (DL_FUNC) &_RcppColors_hsluv2rgb_cpp, 3},
     {"_RcppColors_hsluv_cpp", (DL_FUNC) &_RcppColors_hsluv_cpp, 3},
     {"_RcppColors_hsluv_alpha_cpp", (DL_FUNC) &_RcppColors_hsluv_alpha_cpp, 4},
+    {"_RcppColors_ColorMap1", (DL_FUNC) &_RcppColors_ColorMap1, 3},
     {NULL, NULL, 0}
 };
 

@@ -3,6 +3,8 @@
 
 #include <Rcpp.h>
 
+typedef std::complex<double> cplx;
+
 static std::string rgb_to_hex(int r, int g, int b) {
   std::stringstream ss;
   ss << "#";

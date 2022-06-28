@@ -39,3 +39,27 @@ Then, in your **C++** file, you can call the above functions like this:
 
 std::string mycolor = RcppColors::rgb2hex(0.0, 128.0, 255.0);
 ```
+
+## Color maps
+
+```r
+library(RcppColors)
+library(Bessel)
+x <- y <- seq(-4, 4, len = 1500)
+# complex grid
+W <- outer(y, x, function(x, y) complex(real = x, imaginary = y))
+# computes Bessel values
+Z <- matrix(BesselY(W, nu = 3), nrow = nrow(W), ncol = ncol(W))
+# maps them to colors
+image <- colorMap1(Z)
+# plot
+opar <- par(mar = c(0,0,0,0), bg = "#15191E")
+plot(
+  c(-100, 100), c(-100, 100), type = "n", 
+  xlab = "", ylab = "", axes = FALSE, asp = 1
+)
+rasterImage(image, -100, -100, 100, 100)
+par(opar)
+```
+
+![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/BesselY.png)

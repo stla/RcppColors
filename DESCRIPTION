@@ -8,7 +8,8 @@ Authors@R: c(
   )
 Maintainer: Stéphane Laurent <laurent_step@outlook.fr>
 Description: Provides 'C++' header files to deal with color conversion
-    between different color spaces with 'Rcpp'. Also exports functions to
+    from some color spaces to hexadecimal with 'Rcpp', and exports some
+    color mapping functions for usage in R. Also exports functions to
     convert colors from the 'HSLuv' color space for usage in R. 'HSLuv' is
     a human-friendly alternative to HSL.
 License: GPL-3
