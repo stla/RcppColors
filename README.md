@@ -63,3 +63,34 @@ par(opar)
 ```
 
 ![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/BesselY.png)
+
+
+```r
+library(RcppColors)
+library(Carlson)
+library(rgl)
+library(Rvcg)
+
+mesh <- vcgSphere(subdivision = 8)
+
+color <- apply(mesh$vb[-4L, ], 2L, function(xyz){
+  if(sum(xyz == 0) >= 2){
+    z <- as.matrix(NA_complex_)
+  }else{
+    a <- xyz[1]
+    b <- xyz[2]
+    c <- xyz[3]
+    z <- as.matrix(Carlson_RJ(a, b, c, 1i, 1e-5))
+  }
+  colorMap1(z)
+})
+
+mesh$material <- list(color = color)
+
+open3d(windowRect = c(50, 50, 562, 562), zoom = 0.75)
+bg3d("whitesmoke")
+shade3d(mesh)
+```
+
+![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/CarlsonBall.gif)
+
