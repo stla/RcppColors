@@ -94,3 +94,29 @@ shade3d(mesh)
 
 ![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/CarlsonBall.gif)
 
+```r
+library(RcppColors)
+library(jacobi)
+library(rgl)
+library(Rvcg)
+
+mesh <- vcgSphere(subdivision = 8)
+
+color <- apply(mesh$vb[-4L, ], 2L, function(xyz){
+  a <- xyz[1]
+  b <- xyz[2]
+  c <- xyz[3]
+  z <- wzeta(a + 1i* b, tau = (1i+c)/2)
+  colorMap1(as.matrix(z))
+})
+
+mesh$material <- list(color = color)
+
+open3d(windowRect = c(50, 50, 562, 562), zoom = 0.75)
+bg3d("palevioletred2")
+shade3d(mesh)
+```
+
+![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/ZetaBall.gif)
+
+

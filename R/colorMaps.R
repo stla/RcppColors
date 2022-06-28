@@ -5,6 +5,8 @@
 #' @param bkgcolor background color; it is applied for the \code{NA} values 
 #'   of \code{Z}  
 #' @param nancolor color for infinite and \code{NaN} values 
+#' @param reverse logical vector of length three; for each color component 
+#'   (e.g. R, G, B), whether to reverse it (e.g. \code{R -> 255-R})
 #'
 #' @return A character matrix having the same dimensions as \code{Z}.
 #' 
@@ -16,6 +18,8 @@
 #' }
 #' 
 #' @export
+#' 
+#' @rdname colorMaps
 #'
 #' @examples
 #' library(RcppColors)
@@ -48,6 +52,18 @@
 #' )
 #' rasterImage(image, -100, -100, 100, 100)
 #' par(opar)
-colorMap1 <- function(Z, bkgcolor = "#15191e", nancolor = "#000000"){
-  ColorMap1(Z, bkgcolor, nancolor)
+colorMap1 <- function(
+  Z, bkgcolor = "#15191e", nancolor = "#000000", 
+  reverse = c(FALSE, FALSE, FALSE)
+){
+  ColorMap1(Z, bkgcolor, nancolor, reverse[1], reverse[2], reverse[3])
+}
+
+#' @rdname colorMaps
+#' @export
+colorMap2 <- function(
+    Z, bkgcolor = "#15191e", nancolor = "#000000", 
+    reverse = c(FALSE, FALSE, FALSE)
+){
+  ColorMap2(Z, bkgcolor, nancolor, reverse[1], reverse[2], reverse[3])
 }
