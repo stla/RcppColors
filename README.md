@@ -175,4 +175,36 @@ par(opar)
 
 ![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/E6.png)
 
+```r
+library(RcppColors)
+library(jacobi)
 
+f <- Vectorize(function(q){
+  if(Mod(q) >= 1){
+    NA_complex_
+  }else{
+    tau <- -1i * log(q) / pi
+    if(Im(tau) <= 0){
+      NA_complex_
+    }else{
+      kleinj(tau) / 1728
+    } 
+  }
+})
+
+x <- y <- seq(-1, 1, len = 3000)
+Z <- outer(y, x, function(x, y){
+  f(complex(real = x, imaginary = y)) 
+})
+image <- colorMap2(1/Z, bkgcolor = "#002240", reverse = c(T,T,T))
+
+opar <- par(mar = c(0,0,0,0), bg = "#002240")
+plot(
+  c(-100, 100), c(-100, 100), type = "n", 
+  xlab = "", ylab = "", axes = FALSE, asp = 1
+)
+rasterImage(image, -100, -100, 100, 100)
+par(opar)
+```
+
+![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/kleinj.png)
