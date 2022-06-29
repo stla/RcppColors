@@ -208,3 +208,25 @@ par(opar)
 ```
 
 ![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/kleinj.png)
+
+```r
+library(RcppColors)
+library(jacobi)
+library(rgl)
+library(Rvcg)
+library(pracma)
+
+mesh <- vcgSphere(8)
+sphcoords <- cart2sph(t(mesh$vb[-4L, ]))
+theta <- sphcoords[, 1L] / pi
+phi   <- sphcoords[, 2L] / pi * 2
+Z <- wsigma(theta + 1i * phi, tau = 2+2i)
+color <- colorMap1(Z, reverse = c(TRUE, FALSE, TRUE))
+mesh$material <- list(color = color)
+
+open3d(windowRect = c(50, 50, 562, 562), zoom = 0.75)
+bg3d("lightgrey")
+shade3d(mesh)
+```
+
+![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/SigmaBall.gif)
