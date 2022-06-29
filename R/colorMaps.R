@@ -2,6 +2,14 @@ isComplex <- function(x){
   is.complex(x) || is.numeric(x)
 }
 
+isString <- function(x){
+  is.character(x) && length(x) == 1L && !is.na(x)
+}
+
+isBooleanTriplet <- function(x){
+  is.logical(x) && length(x) == 3L && !anyNA(x)
+}
+
 #' @title Color mappings functions
 #' @description Functions mapping each complex number to a color.
 #'
@@ -63,6 +71,9 @@ colorMap1 <- function(
   reverse = c(FALSE, FALSE, FALSE)
 ){
   stopifnot(isComplex(Z))
+  stopifnot(isString(bkgcolor))
+  stopifnot(isString(nancolor))
+  stopifnot(isBooleanTriplet(reverse))
   ismatrix <- is.matrix(Z)
   storage.mode(Z) <- "complex"
   if(!ismatrix){
@@ -82,6 +93,9 @@ colorMap2 <- function(
     reverse = c(FALSE, FALSE, FALSE)
 ){
   stopifnot(isComplex(Z))
+  stopifnot(isString(bkgcolor))
+  stopifnot(isString(nancolor))
+  stopifnot(isBooleanTriplet(reverse))
   storage.mode(Z) <- "complex"
   ismatrix <- is.matrix(Z)
   if(!ismatrix){
