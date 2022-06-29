@@ -36,7 +36,7 @@ W0 <- outer(y, x, function(x, y){
   complex(real = x, imaginary = y)
 })
 
-eps <- 1e-5
+eps <- 1e-6
 
 Mobius <- function(gamma, t, W){
   mgamma <- Mod(gamma)
@@ -54,15 +54,15 @@ Mobius <- function(gamma, t, W){
   W
 }
 
-t_ <- head(seq(0, 2, length.out = 121), -1L)
-for(i in seq_along(t_)){
+t_ <- head(seq(0, 2, length.out = 361), -1L)
+for(i in 295:length(t_)){
   W <- Mobius(gamma = 0.6 + 0.7i, t = t_[i], W0)
   Tau <- -1i * log(W) / pi
   Tau[Im(Tau) <= eps] <- NA_complex_
-  Z <- kleinj(Tau) / 1728
+  Z <- kleinj(Tau, transfo = TRUE) / 1728
   image <- colorMap2(1/Z, bkgcolor = "pink", reverse = c(T,T,T))
   colortable(RASTER) <- c(image)
-  svg(sprintf("AAAzzpic%03d.svg", i))
+  svg(sprintf("zzpic%03d.svg", i))
   opar <- par(mar = c(0,0,0,0)+1, bg = "pink")
   plot(RASTER)
   par(opar)
@@ -70,8 +70,8 @@ for(i in seq_along(t_)){
 }
 
 
-for(i in 1:2000){
-  for(j in 1:2000){
+for(i in 1:npixels){
+  for(j in 1:npixels){
     z <- kleinj(Tau[i, j])
   }
 }
