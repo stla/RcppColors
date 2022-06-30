@@ -4,3 +4,4 @@
 ^inst/essais$
 ^\.github$
 ^inst/images$
+^cran-comments\.md$
