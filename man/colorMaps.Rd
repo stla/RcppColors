@@ -36,7 +36,7 @@ A string or a character vector or a character matrix,
   by a hexadecimal string.
 
 \if{html}{
-  \out{<div style="text-align: center">}\figure{ModularForm.png}{options: style="max-width:60\%;"}\out{</div>}
+  \figure{ModularForm.png}{options: style="max-width: 60\%; text-align: center; display: block;"}
 }
 \if{latex}{
   \out{\begin{center}}\figure{ModularForm.png}\out{\end{center}}
