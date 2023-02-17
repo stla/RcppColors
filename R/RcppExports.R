@@ -13,11 +13,11 @@ hsluv_alpha_cpp <- function(h, s, l, alpha) {
     .Call(`_RcppColors_hsluv_alpha_cpp`, h, s, l, alpha)
 }
 
-ColorMap1 <- function(Z, bkgcolor, nancolor, revr, revg, revb) {
-    .Call(`_RcppColors_ColorMap1`, Z, bkgcolor, nancolor, revr, revg, revb)
+ColorMap1 <- function(Z, bkgcolor, nancolor, revr, revg, revb, nthreads) {
+    .Call(`_RcppColors_ColorMap1`, Z, bkgcolor, nancolor, revr, revg, revb, nthreads)
 }
 
-ColorMap2 <- function(Z, bkgcolor, nancolor, revh, revs, revl) {
-    .Call(`_RcppColors_ColorMap2`, Z, bkgcolor, nancolor, revh, revs, revl)
+ColorMap2 <- function(Z, bkgcolor, nancolor, revh, revs, revl, nthreads) {
+    .Call(`_RcppColors_ColorMap2`, Z, bkgcolor, nancolor, revh, revs, revl, nthreads)
 }
 

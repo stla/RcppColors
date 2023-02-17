@@ -19,6 +19,7 @@ isBooleanTriplet <- function(x){
 #' @param nancolor color for infinite and \code{NaN} values 
 #' @param reverse logical vector of length three; for each color component 
 #'   (e.g. R, G, B), whether to reverse it (e.g. \code{R -> 255-R})
+#' @param nthreads number of threads used for parallel computation
 #'
 #' @return A string or a character vector or a character matrix, 
 #'   having the same size as \code{Z}. Each entry is a color given 
@@ -68,18 +69,23 @@ isBooleanTriplet <- function(x){
 #' par(opar)
 colorMap1 <- function(
   Z, bkgcolor = "#15191e", nancolor = "#000000", 
-  reverse = c(FALSE, FALSE, FALSE)
+  reverse = c(FALSE, FALSE, FALSE), 
+  nthreads = 1L
 ){
   stopifnot(isComplex(Z))
   stopifnot(isString(bkgcolor))
   stopifnot(isString(nancolor))
   stopifnot(isBooleanTriplet(reverse))
+  nthreads <- as.integer(nthreads)
+  stopifnot(nthreads >= 1L)
   ismatrix <- is.matrix(Z)
   storage.mode(Z) <- "complex"
   if(!ismatrix){
     Z <- cbind(Z)
   }
-  P <- ColorMap1(Z, bkgcolor, nancolor, reverse[1], reverse[2], reverse[3])
+  P <- ColorMap1(
+    Z, bkgcolor, nancolor, reverse[1], reverse[2], reverse[3], nthreads
+  )
   if(!ismatrix){
     P <- c(P)
   }
@@ -90,18 +96,23 @@ colorMap1 <- function(
 #' @export
 colorMap2 <- function(
     Z, bkgcolor = "#15191e", nancolor = "#000000", 
-    reverse = c(FALSE, FALSE, FALSE)
+    reverse = c(FALSE, FALSE, FALSE),
+    nthreads = 1L
 ){
   stopifnot(isComplex(Z))
   stopifnot(isString(bkgcolor))
   stopifnot(isString(nancolor))
   stopifnot(isBooleanTriplet(reverse))
+  nthreads <- as.integer(nthreads)
+  stopifnot(nthreads >= 1L)
   storage.mode(Z) <- "complex"
   ismatrix <- is.matrix(Z)
   if(!ismatrix){
     Z <- cbind(Z)
   }
-  P <- ColorMap2(Z, bkgcolor, nancolor, reverse[1], reverse[2], reverse[3])
+  P <- ColorMap2(
+    Z, bkgcolor, nancolor, reverse[1], reverse[2], reverse[3], nthreads
+  )
   if(!ismatrix){
     P <- c(P)
   }

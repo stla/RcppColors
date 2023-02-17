@@ -16,10 +16,10 @@ g <- function(z){
   )
 }
 
-x <- y <- seq(-1, 1, len = 1500)
+x <- y <- seq(-1, 1, len = 5000)
 W <- outer(y, x, function(x, y) complex(real = x, imaginary = y))
 Z <- g(W)
-image <- colorMap1(Z, bkgcolor = "#002240")
+image <- colorMap1(Z, bkgcolor = "#002240", nthreads = 1L)
 
 opar <- par(mar = c(0,0,0,0), bg = "#002240")
 plot(

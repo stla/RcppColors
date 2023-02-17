@@ -9,14 +9,16 @@ colorMap1(
   Z,
   bkgcolor = "#15191e",
   nancolor = "#000000",
-  reverse = c(FALSE, FALSE, FALSE)
+  reverse = c(FALSE, FALSE, FALSE),
+  nthreads = 1L
 )
 
 colorMap2(
   Z,
   bkgcolor = "#15191e",
   nancolor = "#000000",
-  reverse = c(FALSE, FALSE, FALSE)
+  reverse = c(FALSE, FALSE, FALSE),
+  nthreads = 1L
 )
 }
 \arguments{
@@ -29,6 +31,8 @@ of \code{Z}}
 
 \item{reverse}{logical vector of length three; for each color component 
 (e.g. R, G, B), whether to reverse it (e.g. \code{R -> 255-R})}
+
+\item{nthreads}{number of threads used for parallel computation}
 }
 \value{
 A string or a character vector or a character matrix, 
