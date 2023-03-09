@@ -230,3 +230,10 @@ shade3d(mesh)
 ```
 
 ![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/SigmaBall.gif)
+
+___
+
+
+![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/kaleidoscope.png)
+
+![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/kaleidoscope.gif)
