@@ -3,6 +3,7 @@
 \name{colorMap1}
 \alias{colorMap1}
 \alias{colorMap2}
+\alias{colorMap3}
 \title{Color mappings functions}
 \usage{
 colorMap1(
@@ -20,6 +21,15 @@ colorMap2(
   reverse = c(FALSE, FALSE, FALSE),
   nthreads = 1L
 )
+
+colorMap3(
+  Z,
+  bkgcolor = "#15191e",
+  nancolor = "#000000",
+  s = 80,
+  n = 5,
+  nthreads = 1L
+)
 }
 \arguments{
 \item{Z}{complex number, vector or matrix}
@@ -33,6 +43,11 @@ of \code{Z}}
 (e.g. R, G, B), whether to reverse it (e.g. \code{R -> 255-R})}
 
 \item{nthreads}{number of threads used for parallel computation}
+
+\item{s}{saturation, a number between 0 and 100}
+
+\item{n}{number of rays drawn in a cycle; it should be a positive integer 
+but any non-zero numeric value is accepted}
 }
 \value{
 A string or a character vector or a character matrix, 

@@ -1,14 +1,19 @@
-isComplex <- function(x){
+isComplex <- function(x) {
   is.complex(x) || is.numeric(x)
 }
 
-isString <- function(x){
+isString <- function(x) {
   is.character(x) && length(x) == 1L && !is.na(x)
 }
 
-isBooleanTriplet <- function(x){
+isBooleanTriplet <- function(x) {
   is.logical(x) && length(x) == 3L && !anyNA(x)
 }
+
+isNumber <- function(x) {
+  is.numeric(x) && length(x) == 1L && !is.na(x)
+}
+
 
 #' @title Color mappings functions
 #' @description Functions mapping each complex number to a color.
@@ -19,6 +24,9 @@ isBooleanTriplet <- function(x){
 #' @param nancolor color for infinite and \code{NaN} values 
 #' @param reverse logical vector of length three; for each color component 
 #'   (e.g. R, G, B), whether to reverse it (e.g. \code{R -> 255-R})
+#' @param s saturation, a number between 0 and 100
+#' @param n number of rays drawn in a cycle; it should be a positive integer 
+#'   but any non-zero numeric value is accepted
 #' @param nthreads number of threads used for parallel computation
 #'
 #' @return A string or a character vector or a character matrix, 
@@ -112,6 +120,38 @@ colorMap2 <- function(
   }
   P <- ColorMap2(
     Z, bkgcolor, nancolor, reverse[1], reverse[2], reverse[3], nthreads
+  )
+  if(!ismatrix){
+    P <- c(P)
+  }
+  P
+}
+
+#' @rdname colorMaps
+#' @export
+colorMap3 <- function(
+    Z, bkgcolor = "#15191e", nancolor = "#000000", 
+    s = 80, n = 5, 
+    nthreads = 1L
+){
+  stopifnot(isComplex(Z))
+  stopifnot(isString(bkgcolor))
+  stopifnot(isString(nancolor))
+  stopifnot(isNumber(s))
+  s <- as.double(s)
+  stopifnot(s >= 0, s <= 100)
+  stopifnot(isNumber(n))
+  n <- as.double(n)
+  stopifnot(n != 0)
+  nthreads <- as.integer(nthreads)
+  stopifnot(nthreads >= 1L)
+  storage.mode(Z) <- "complex"
+  ismatrix <- is.matrix(Z)
+  if(!ismatrix){
+    Z <- cbind(Z)
+  }
+  P <- ColorMap3(
+    Z, bkgcolor, nancolor, s, n, nthreads
   )
   if(!ismatrix){
     P <- c(P)

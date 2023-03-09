@@ -85,6 +85,22 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// ColorMap3
+Rcpp::CharacterMatrix ColorMap3(Rcpp::ComplexMatrix Z, std::string bkgcolor, std::string nancolor, double s, double r, const unsigned int nthreads);
+RcppExport SEXP _RcppColors_ColorMap3(SEXP ZSEXP, SEXP bkgcolorSEXP, SEXP nancolorSEXP, SEXP sSEXP, SEXP rSEXP, SEXP nthreadsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::ComplexMatrix >::type Z(ZSEXP);
+    Rcpp::traits::input_parameter< std::string >::type bkgcolor(bkgcolorSEXP);
+    Rcpp::traits::input_parameter< std::string >::type nancolor(nancolorSEXP);
+    Rcpp::traits::input_parameter< double >::type s(sSEXP);
+    Rcpp::traits::input_parameter< double >::type r(rSEXP);
+    Rcpp::traits::input_parameter< const unsigned int >::type nthreads(nthreadsSEXP);
+    rcpp_result_gen = Rcpp::wrap(ColorMap3(Z, bkgcolor, nancolor, s, r, nthreads));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_RcppColors_hsluv2rgb_cpp", (DL_FUNC) &_RcppColors_hsluv2rgb_cpp, 3},
@@ -92,6 +108,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_RcppColors_hsluv_alpha_cpp", (DL_FUNC) &_RcppColors_hsluv_alpha_cpp, 4},
     {"_RcppColors_ColorMap1", (DL_FUNC) &_RcppColors_ColorMap1, 7},
     {"_RcppColors_ColorMap2", (DL_FUNC) &_RcppColors_ColorMap2, 7},
+    {"_RcppColors_ColorMap3", (DL_FUNC) &_RcppColors_ColorMap3, 6},
     {NULL, NULL, 0}
 };
 

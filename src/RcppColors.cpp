@@ -193,3 +193,72 @@ Rcpp::CharacterMatrix ColorMap2(Rcpp::ComplexMatrix Z,
   
   return P;
 }
+
+double perFract(double x, double t, double m, double M) {
+  x = x / t;
+  return m + (M - m) * (x - std::floor(x));  
+}
+
+std::string colormap3(cplx z,
+                      std::string nancolor,
+                      double s,
+                      double r) {
+  double x = z.real();
+  double y = z.imag();
+  if(std::isnan(x) || std::isnan(y) || std::isinf(x) || std::isinf(y)) {
+    return nancolor;
+  }
+  double arg = std::arg(z);
+  if(arg < 0) {
+    arg += 2.0 * M_PI;
+  }
+  double h = arg * 57.29577951308232087680; /* (180 / pi) */
+  double ph = perFract(h, 360.0 / r, 216.0, 360.0) / 360.0;
+  double plogm = perFract(log1p(std::abs(z)), 2 * M_PI / r, 0.6, 1.0);
+  double l = 100.0 * ph * plogm;
+  return _hsluv2hex_(h, s, l);
+}
+
+// [[Rcpp::export]]
+Rcpp::CharacterMatrix ColorMap3(Rcpp::ComplexMatrix Z,
+                                std::string bkgcolor,
+                                std::string nancolor,
+                                double s,
+                                double r,
+                                const unsigned int nthreads) {
+  const int m = Z.nrow();
+  const int n = Z.ncol();
+  Rcpp::CharacterMatrix P(m, n);
+  
+  if(nthreads == 1) {
+    Rcpp::CharacterVector Pj(m);
+    for(int j = 0; j < n; j++) {
+      const Rcpp::ComplexVector Zj = Z(Rcpp::_, j);
+      for(int i = 0; i < m; i++) {
+        if(Rcpp::ComplexVector::is_na(Zj(i))) {
+          Pj(i) = bkgcolor;
+        } else {
+          Pj(i) = colormap3(fromCplx(Zj(i)), nancolor, s, r);
+        }
+      }
+      P(Rcpp::_, j) = Pj;
+    }
+  } else {
+    Rcomplex zij;
+#ifdef _OPENMP
+#pragma omp parallel for num_threads(nthreads) collapse(2) private(zij)
+#endif
+    for(int j = 0; j < n; j++) {
+      for(int i = 0; i < m; i++) {
+        zij = Z(i,j); 
+        if(Rcpp::ComplexVector::is_na(zij)) {
+          P(i,j) = bkgcolor;
+        } else {
+          P(i,j) = colormap3(fromCplx(zij), nancolor, s, r);
+        }
+      }
+    }
+  }
+  
+  return P;
+}

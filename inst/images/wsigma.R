@@ -10,7 +10,7 @@ Z <- outer(y, x, function(x, y){
   f(complex(real = x, imaginary = y)) 
 })
 
-image <- colorMap1(Z, bkgcolor = "#002240")
+image <- colorMap3(Z, bkgcolor = "#002240", n = 20)
 
 opar <- par(mar = c(0,0,0,0), bg = "#002240")
 plot(

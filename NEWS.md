@@ -1,7 +1,8 @@
 # RcppColors 0.3.0
 
-Now the two color mapping functions `colorMap1` and `colorMap2` can be 
-executed using parallel computations.
+- New color mapping function `colorMap3`.
+
+- The three color mapping functions can be executed using parallel computations.
 
 
 # RcppColors 0.2.0

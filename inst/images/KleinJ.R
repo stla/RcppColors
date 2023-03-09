@@ -15,11 +15,16 @@ f <- Vectorize(function(q){
   z
 })
 
-x <- y <- seq(-1, 1, len = 3000)
+x <- y <- seq(-1, 1, len = 512)
 Z <- outer(y, x, function(x, y){
-  f(complex(real = x, imaginary = y)) 
+  tryCatch({
+    f(complex(real = x, imaginary = y))
+  }, error = function(e) {
+    NA_complex_
+  })
 })
 image <- colorMap2(1/Z, bkgcolor = "#002240", reverse = c(T,T,T))
+image <- colorMap3(1/Z, bkgcolor = "#002240", s = 100, n=2)
 
 opar <- par(mar = c(0,0,0,0), bg = "#002240")
 plot(
