@@ -237,3 +237,5 @@ ___
 ![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/kaleidoscope.png)
 
 ![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/kaleidoscope.gif)
+
+![](https://raw.githubusercontent.com/stla/jacobi/main/inst/images/KleinMoebius_cm3.gif)
