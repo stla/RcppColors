@@ -22,8 +22,9 @@ isNumber <- function(x) {
 #' @param bkgcolor background color; it is applied for the \code{NA} values 
 #'   of \code{Z}  
 #' @param nancolor color for infinite and \code{NaN} values 
-#' @param reverse logical vector of length three; for each color component 
-#'   (e.g. R, G, B), whether to reverse it (e.g. \code{R -> 255-R})
+#' @param reverse logical vector of length three; for each component of the
+#'   color space (R, G, B or H, S, L), whether to reverse it (e.g. 
+#'   \code{R -> 255-R})
 #' @param s saturation, a number between 0 and 100
 #' @param n number of rays drawn in a cycle; it should be a positive integer 
 #'   but any non-zero numeric value is accepted
@@ -158,3 +159,31 @@ colorMap3 <- function(
   }
   P
 }
+
+#' @rdname colorMaps
+#' @export
+colorMap4 <- function(
+    Z, bkgcolor = "#15191e", nancolor = "#000000", 
+    reverse = c(FALSE, FALSE, FALSE),
+    nthreads = 1L
+){
+  stopifnot(isComplex(Z))
+  stopifnot(isString(bkgcolor))
+  stopifnot(isString(nancolor))
+  stopifnot(isBooleanTriplet(reverse))
+  nthreads <- as.integer(nthreads)
+  stopifnot(nthreads >= 1L)
+  storage.mode(Z) <- "complex"
+  ismatrix <- is.matrix(Z)
+  if(!ismatrix){
+    Z <- cbind(Z)
+  }
+  P <- ColorMap4(
+    Z, bkgcolor, nancolor, reverse[1], reverse[2], reverse[3], nthreads
+  )
+  if(!ismatrix){
+    P <- c(P)
+  }
+  P
+}
+

@@ -4,6 +4,7 @@
 \alias{colorMap1}
 \alias{colorMap2}
 \alias{colorMap3}
+\alias{colorMap4}
 \title{Color mappings functions}
 \usage{
 colorMap1(
@@ -30,6 +31,14 @@ colorMap3(
   n = 5,
   nthreads = 1L
 )
+
+colorMap4(
+  Z,
+  bkgcolor = "#15191e",
+  nancolor = "#000000",
+  reverse = c(FALSE, FALSE, FALSE),
+  nthreads = 1L
+)
 }
 \arguments{
 \item{Z}{complex number, vector or matrix}
@@ -39,8 +48,9 @@ of \code{Z}}
 
 \item{nancolor}{color for infinite and \code{NaN} values}
 
-\item{reverse}{logical vector of length three; for each color component 
-(e.g. R, G, B), whether to reverse it (e.g. \code{R -> 255-R})}
+\item{reverse}{logical vector of length three; for each component of the
+color space (R, G, B or H, S, L), whether to reverse it (e.g. 
+\code{R -> 255-R})}
 
 \item{nthreads}{number of threads used for parallel computation}
 

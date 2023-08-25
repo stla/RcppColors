@@ -302,9 +302,9 @@ std::string colormap4(cplx z,
     arg += 2.0 * M_PI;
   }
   double h = arg * 57.29577951308232087680; /* (180 / pi) */
-  double mz = std::abs(z);
-  double s = 100 * (1 - mz * mz);
-  double l = 100 * (1 - (1 - mz)*(1 - mz));
+  double bmz = b(std::abs(z));
+  double s = 100 * (1 - bmz * bmz);
+  double l = 100 * (1 - (1 - bmz)*(1 - bmz));
   if(revh) {
     h = 360.0 - h;
   }
