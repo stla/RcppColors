@@ -1,3 +1,8 @@
+# RcppColors 0.4.0
+
+- New color mapping function `colorMap4`.
+
+
 # RcppColors 0.3.0
 
 - New color mapping function `colorMap3`.
