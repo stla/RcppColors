@@ -301,6 +301,32 @@ par(opar)
 
 ![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/KleinFibonacciDedekind.png)
 
+```r
+library(RcppColors)
+library(jacobi)
+
+f <- Vectorize(function(z){
+  wsigma(z, omega = c(1, 0.25 + 1i))
+})
+
+x <- y <- seq(-5, 5, length.out = 512)
+Z <- outer(y, x, function(x, y){
+  f(complex(real = x, imaginary = y)) 
+})
+
+image <- colorMap5(Z, bkgcolor = "#002240")
+
+opar <- par(mar = c(0,0,0,0), bg = "#002240")
+plot(
+  c(-100, 100), c(-100, 100), type = "n", xaxs="i", yaxs="i", 
+  xlab = NA, ylab = NA, axes = FALSE, asp = 1
+)
+rasterImage(image, -100, -100, 100, 100)
+par(opar)
+```
+
+![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/wsigma_cm5.png)
+
 ___
 
 

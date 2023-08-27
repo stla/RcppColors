@@ -230,7 +230,7 @@ static double f(double x, double h, double s, double v) {
   return 255.0 * (v - v * s * mm);
 }
 
-static std::array<double, 3> _hsi2rgb_(double h, double s, double i) {
+static std::array<int, 3> _hsi2rgb_(double h, double s, double i) {
   if(h < 0.0 || h > 360.0) {
     Rcpp::stop("Invalid value of `h`.");
   }
@@ -240,7 +240,7 @@ static std::array<double, 3> _hsi2rgb_(double h, double s, double i) {
   if(i < 0.0 || i > 100.0) {
     Rcpp::stop("Invalid value of `i`.");
   }
-  std::array<double, 3> out;
+  std::array<int, 3> out;
   double r, g, b;
   i = i / 100;
   double is = i*s / 100;
@@ -252,17 +252,17 @@ static std::array<double, 3> _hsi2rgb_(double h, double s, double i) {
     b = second;
     g = i + 2*is + b - r; 
   } else if(h < 4*PIover3) {
-    g = i + is * cos(h - 2*PIover3) / cos(h + M_PI);
+    g = i + is * cos(h - 2*PIover3) / cos(M_PI + h);
     r = second;
     b = i + 2*is + r - g;
-  }else if(h <= 2*M_PI) {
+  } else {
     b = i + is * cos(h - 4*PIover3) / cos(5*PIover3 - h);
     g = second;
     r = i + 2*is + g - b;
   }
-  out[0] = (int)round(255.0 * r);
-  out[1] = (int)round(255.0 * g);
-  out[2] = (int)round(255.0 * b);
+  out[0] = (int)round(85.0 * r);
+  out[1] = (int)round(85.0 * g);
+  out[2] = (int)round(85.0 * b);
   return out;
 }
 
@@ -327,7 +327,7 @@ namespace RcppColors {
   }
 
   static inline std::string hsi2hex(double h, double s, double i) {
-    std::array<double, 3> rgb = _hsi2rgb_(h, s, i);
+    std::array<int, 3> rgb = _hsi2rgb_(h, s, i);
     return rgb_to_hex(rgb[0], rgb[1], rgb[2]); 
   }
 

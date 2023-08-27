@@ -378,9 +378,9 @@ std::string colormap5(cplx z,
   }
   double arg = std::arg(z);
   if(arg < 0) {
-    arg += 2.0 * M_PI;
+    arg += M_PI;
   }
-  double h = std::min(360.0 * arg/2/M_PI, 360.0);
+  double h = std::max(0.0, std::min(360.0 * arg/2/M_PI, 359.999));
   double w = 2 * M_PI * std::log1p(fabs(arg));
   double s = 100 * sqrt(( 1.0 + sin(w) ) / 2.0);
   double i = 100 * ( 1.0 + cos(w) ) / 2.0;
