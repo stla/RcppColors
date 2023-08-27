@@ -23,7 +23,7 @@ isNumber <- function(x) {
 #'   of \code{Z}  
 #' @param nancolor color for infinite and \code{NaN} values 
 #' @param reverse logical vector of length three; for each component of the
-#'   color space (R, G, B or H, S, L), whether to reverse it (e.g. 
+#'   color space (e.g. R, G, B or H, S, L), whether to reverse it (e.g. 
 #'   \code{R -> 255-R})
 #' @param s saturation, a number between 0 and 100
 #' @param n number of rays drawn in a cycle; it should be a positive integer 

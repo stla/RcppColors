@@ -58,7 +58,7 @@ of \code{Z}}
 \item{nancolor}{color for infinite and \code{NaN} values}
 
 \item{reverse}{logical vector of length three; for each component of the
-color space (R, G, B or H, S, L), whether to reverse it (e.g. 
+color space (e.g. R, G, B or H, S, L), whether to reverse it (e.g. 
 \code{R -> 255-R})}
 
 \item{nthreads}{number of threads used for parallel computation}
