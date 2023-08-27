@@ -29,3 +29,7 @@ ColorMap4 <- function(Z, bkgcolor, nancolor, revh, revs, revl, nthreads) {
     .Call(`_RcppColors_ColorMap4`, Z, bkgcolor, nancolor, revh, revs, revl, nthreads)
 }
 
+ColorMap5 <- function(Z, bkgcolor, nancolor, revh, revs, revi, nthreads) {
+    .Call(`_RcppColors_ColorMap5`, Z, bkgcolor, nancolor, revh, revs, revi, nthreads)
+}
+
