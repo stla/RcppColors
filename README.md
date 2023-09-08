@@ -334,6 +334,7 @@ par(opar)
 
 ___
 
+![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/KleinFibo_5-6-7-9.png)
 
 ![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/kaleidoscope.png)
 
