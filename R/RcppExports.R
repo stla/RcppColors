@@ -49,3 +49,15 @@ ColorMap7 <- function(Z, bkgcolor, nancolor, revh, revs, revv, nthreads) {
     .Call(`_RcppColors_ColorMap7`, Z, bkgcolor, nancolor, revh, revs, revv, nthreads)
 }
 
+ColorMap8 <- function(Z, bkgcolor, nancolor, revh, revs, revi, nthreads) {
+    .Call(`_RcppColors_ColorMap8`, Z, bkgcolor, nancolor, revh, revs, revi, nthreads)
+}
+
+ColorMap9 <- function(Z, bkgcolor, nancolor, revh, revs, revl, nthreads) {
+    .Call(`_RcppColors_ColorMap9`, Z, bkgcolor, nancolor, revh, revs, revl, nthreads)
+}
+
+ColorMap10 <- function(Z, bkgcolor, nancolor, revh, revs, revv, nthreads) {
+    .Call(`_RcppColors_ColorMap10`, Z, bkgcolor, nancolor, revh, revs, revv, nthreads)
+}
+

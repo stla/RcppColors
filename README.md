@@ -13,9 +13,9 @@ std::string hsluv2hex(double h, double s, double l);
 std::string hsluv2hex(double h, double s, double l, double alpha);
 std::string hsv2hex(double h, double s, double v);
 std::string hsv2hex(double h, double s, double v, double alpha);
-std::string hsv2hex(double h, double s, double l);
+std::string hsl2hex(double h, double s, double l);
 std::string hsl2hex(double h, double s, double l, double alpha);
-std::string hsl2hex(double h, double s, double i);
+std::string hsi2hex(double h, double s, double i);
 std::string hsi2hex(double h, double s, double i, double alpha);
 ```
 
@@ -46,7 +46,7 @@ std::string mycolor = RcppColors::rgb2hex(0.0, 128.0, 255.0);
 
 ## Color maps
 
-Seven color maps are available in R.
+Ten color maps are available in R.
 
 ```r
 library(RcppColors)
