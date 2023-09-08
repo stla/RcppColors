@@ -338,6 +338,8 @@ ___
 
 ![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/KleinRt5_smooth.gif)
 
+![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/KleinDedekind.png)
+
 ![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/kaleidoscope.png)
 
 ![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/kaleidoscope.gif)
