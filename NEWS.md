@@ -1,8 +1,8 @@
 # RcppColors 0.5.0
 
-- New exposed C++ function `hsi2hex`.
+- New exposed C++ functions `hsl2hex` and `hsi2hex`.
 
-- New color mapping function `colorMap5`.
+- New color mapping functions `colorMap5`, `colorMap6` and `colorMap7`.
 
 
 # RcppColors 0.4.0

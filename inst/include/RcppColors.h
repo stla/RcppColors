@@ -272,7 +272,7 @@ static std::array<int, 3> _hsl2rgb_(double h, double s, double l) {
     g = 0.0;
     b = x;
   }
-  double m = l - c / 2.0;
+  double m = l - chroma / 2.0;
   r += m;
   g += m;
   b += m;

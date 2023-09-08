@@ -564,7 +564,7 @@ std::string colormap7(cplx z,
   if(revv) {
     v = 100.0 - v;
   }
-  return RcppColors::hsv2hex(h, s, l);
+  return RcppColors::hsv2hex(h, s, v);
 }
 
 // [[Rcpp::export]]
