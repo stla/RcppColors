@@ -25,7 +25,8 @@ x <- seq(-1, 1, length.out = 2048)
 y <- seq(-1, 1, length.out = 2048)
 Z <- outer(x, y, f)
 K <- kleinj(Z) / 1728
-image <- colorMap5(G, bkgcolor = bkgcol)
+G <- K / (1 - K - K*K)
+image <- colorMap9(K, bkgcolor = bkgcol)
 # plot
 opar <- par(mar = c(0,0,0,0), bg = bkgcol)
 plot(
