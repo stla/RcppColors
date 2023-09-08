@@ -6,6 +6,8 @@
 \alias{colorMap3}
 \alias{colorMap4}
 \alias{colorMap5}
+\alias{colorMap6}
+\alias{colorMap7}
 \title{Color mappings functions}
 \usage{
 colorMap1(
@@ -42,6 +44,22 @@ colorMap4(
 )
 
 colorMap5(
+  Z,
+  bkgcolor = "#15191e",
+  nancolor = "#000000",
+  reverse = c(FALSE, FALSE, FALSE),
+  nthreads = 1L
+)
+
+colorMap6(
+  Z,
+  bkgcolor = "#15191e",
+  nancolor = "#000000",
+  reverse = c(FALSE, FALSE, FALSE),
+  nthreads = 1L
+)
+
+colorMap7(
   Z,
   bkgcolor = "#15191e",
   nancolor = "#000000",
