@@ -4,6 +4,8 @@
 
 - New color mapping functions `colorMap5`, `colorMap6` and `colorMap7`.
 
+- New function `hsl`.
+
 
 # RcppColors 0.4.0
 

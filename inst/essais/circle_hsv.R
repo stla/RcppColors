@@ -1,6 +1,6 @@
 library(RcppColors)
 
-saturation <- 100
+saturation <- 1
 f <- Vectorize(
   function(x, y){
     z <- complex(real = x, imaginary = y)
@@ -12,8 +12,7 @@ f <- Vectorize(
     if(radians < 0){
       radians <- radians + 2*pi
     }
-    degrees <- 360 * radians / 2 / pi
-    hsluv(h = degrees, s = saturation, l = 100*modulus)
+    hsv(h = radians / (2*pi), s = saturation, v = modulus)
   }
 )
 
