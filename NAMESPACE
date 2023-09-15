@@ -2,6 +2,10 @@
 
 export(colorMap1)
 export(colorMap10)
+export(colorMap11)
+export(colorMap12)
+export(colorMap13)
+export(colorMap14)
 export(colorMap2)
 export(colorMap3)
 export(colorMap4)

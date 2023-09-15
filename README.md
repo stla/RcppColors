@@ -46,7 +46,7 @@ std::string mycolor = RcppColors::rgb2hex(0.0, 128.0, 255.0);
 
 ## Color maps
 
-Ten color maps are available in R.
+Fourteen color maps are available in R.
 
 ```r
 library(RcppColors)

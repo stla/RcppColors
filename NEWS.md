@@ -2,7 +2,7 @@
 
 - New exposed C++ functions `hsl2hex` and `hsi2hex`.
 
-- New color mapping functions `colorMap5`, ..., `colorMap10`.
+- New color mapping functions `colorMap5`, ..., `colorMap14`.
 
 - New function `hsl`.
 
