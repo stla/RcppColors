@@ -345,3 +345,5 @@ ___
 ![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/kaleidoscope.gif)
 
 ![](https://raw.githubusercontent.com/stla/jacobi/main/inst/images/KleinMoebius_cm3.gif)
+
+![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/RogersRamanujanAltMobius.gif)
