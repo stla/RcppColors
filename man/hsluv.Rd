@@ -26,7 +26,7 @@ The \code{hsluv} function returns a hexadecimal string representing
 }
 \description{
 Converts a color given in HSLuv coordinates to a hexadecimal 
-  string or a RGB color specification
+  string or a RGB color specification.
 }
 \examples{
 saturation <- 100

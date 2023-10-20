@@ -1,3 +1,8 @@
+# RcppColors 0.6.0
+
+- New function `hsi`.
+
+
 # RcppColors 0.5.0
 
 - New exposed C++ functions `hsl2hex` and `hsi2hex`.

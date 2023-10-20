@@ -78,6 +78,33 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// hsi_cpp
+std::string hsi_cpp(double h, double s, double i);
+RcppExport SEXP _RcppColors_hsi_cpp(SEXP hSEXP, SEXP sSEXP, SEXP iSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type h(hSEXP);
+    Rcpp::traits::input_parameter< double >::type s(sSEXP);
+    Rcpp::traits::input_parameter< double >::type i(iSEXP);
+    rcpp_result_gen = Rcpp::wrap(hsi_cpp(h, s, i));
+    return rcpp_result_gen;
+END_RCPP
+}
+// hsi_alpha_cpp
+std::string hsi_alpha_cpp(double h, double s, double i, double alpha);
+RcppExport SEXP _RcppColors_hsi_alpha_cpp(SEXP hSEXP, SEXP sSEXP, SEXP iSEXP, SEXP alphaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type h(hSEXP);
+    Rcpp::traits::input_parameter< double >::type s(sSEXP);
+    Rcpp::traits::input_parameter< double >::type i(iSEXP);
+    Rcpp::traits::input_parameter< double >::type alpha(alphaSEXP);
+    rcpp_result_gen = Rcpp::wrap(hsi_alpha_cpp(h, s, i, alpha));
+    return rcpp_result_gen;
+END_RCPP
+}
 // ColorMap1
 Rcpp::CharacterMatrix ColorMap1(Rcpp::ComplexMatrix Z, std::string bkgcolor, std::string nancolor, bool revr, bool revg, bool revb, const unsigned int nthreads);
 RcppExport SEXP _RcppColors_ColorMap1(SEXP ZSEXP, SEXP bkgcolorSEXP, SEXP nancolorSEXP, SEXP revrSEXP, SEXP revgSEXP, SEXP revbSEXP, SEXP nthreadsSEXP) {
@@ -322,6 +349,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_RcppColors_hsluv_alpha_cpp", (DL_FUNC) &_RcppColors_hsluv_alpha_cpp, 4},
     {"_RcppColors_hsl_cpp", (DL_FUNC) &_RcppColors_hsl_cpp, 3},
     {"_RcppColors_hsl_alpha_cpp", (DL_FUNC) &_RcppColors_hsl_alpha_cpp, 4},
+    {"_RcppColors_hsi_cpp", (DL_FUNC) &_RcppColors_hsi_cpp, 3},
+    {"_RcppColors_hsi_alpha_cpp", (DL_FUNC) &_RcppColors_hsi_alpha_cpp, 4},
     {"_RcppColors_ColorMap1", (DL_FUNC) &_RcppColors_ColorMap1, 7},
     {"_RcppColors_ColorMap2", (DL_FUNC) &_RcppColors_ColorMap2, 7},
     {"_RcppColors_ColorMap3", (DL_FUNC) &_RcppColors_ColorMap3, 6},

@@ -36,6 +36,17 @@ std::string hsl_alpha_cpp(double h, double s, double l, double alpha) {
 }
 
 
+// [[Rcpp::export]]
+std::string hsi_cpp(double h, double s, double i) {
+  return RcppColors::hsi2hex(h, s, i);
+}
+
+// [[Rcpp::export]]
+std::string hsi_alpha_cpp(double h, double s, double i, double alpha) {
+  return RcppColors::hsi2hex(h, s, i) + opacity(alpha);
+}
+
+
 std::string rgb2hex(double r, double g, double b) {
   int ri = (int)round(r);
   int gi = (int)round(g);

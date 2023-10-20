@@ -1,7 +1,7 @@
 Type: Package
 Package: RcppColors
 Title: Color Mappings and 'C++' Header Files for Color Conversion
-Version: 0.5.0
+Version: 0.6.0
 Authors@R: c(
     person("Stéphane", "Laurent", , "laurent_step@outlook.fr", role = c("cre", "aut")),
     person("Scott", "Spencer", role = "aut")
