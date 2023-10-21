@@ -2,6 +2,7 @@
 #define RCPPCOLORS_H
 
 #include <Rcpp.h>
+#include <array>
 
 typedef std::complex<double> cplx;
 
