@@ -351,3 +351,5 @@ ___
 ![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/RogersRamanujanAltMobius.gif)
 
 ![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/wp_Cayley.gif)
+
+![](https://raw.githubusercontent.com/stla/RcppColors/main/inst/images/isocuboids_lambdaOnSquare-gray.gif)
